@@ -1,0 +1,17 @@
+try:
+    fhand = open(input("Your File: "))
+except:
+    print("No such file")
+    quit()
+
+count = 0
+total = 0
+for line in fhand:
+    line = line.rstrip()
+    if line.startswith("X-DSPAM-Confidence:"):
+        flag = line.find(" ")
+        target = float(line[flag+1:])
+        total = total + target
+        count = count + 1
+
+print("Average spam confidence:", total/count)
