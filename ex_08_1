@@ -1,0 +1,21 @@
+target = input("word you want find:")
+
+fh = open("words.txt")
+count = 0 # 预设value
+r=dict() #预设一个dict
+for line in fh:
+    line = line.rstrip()
+    if len(line)<1:
+        continue #guard
+    words = line.split()
+    #创造value和key，存进dict
+    for word in words:
+        count = count + 1
+        if word in r:
+            continue
+        r[word] = count #【key】= value,存入dict
+
+if target in r:
+    print("found")
+else:
+        print("not found")
