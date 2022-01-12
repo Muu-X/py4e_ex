@@ -1,0 +1,15 @@
+fh = open("mbox-short.txt")
+
+r=dict()
+
+for line in fh:
+    line = line.rstrip()
+    word = line.split()
+    if len(word) <3  or word[0]!="From":
+        continue
+
+    day = word[2]
+
+    r[day] =r.get(day,0) + 1
+
+print(r)
