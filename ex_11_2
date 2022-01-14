@@ -1,0 +1,13 @@
+import re
+count = 0
+lst=list()
+fh = open("mbox-short.txt")
+for line in fh:
+    line= line.rstrip()
+    #this return a list,called num, and for the next loop, num will have different value
+    num = re.findall('^New Revision:(\s[0-9.]+)',line) 
+    if len(num)<1: continue
+    for number in num:
+        lst.append(float(number))
+
+print("average:", int(sum(lst)/len(lst)))
